@@ -75,14 +75,19 @@ const tableColumns = [
 export default function About() {
 
   return (
-    <div>
-      <FlexBox
-        className="sap-margin-large"
-        alignItems="Center"
-        direction="Row"
-        justifyContent="Center"
-        wrap="Wrap"
-      >
+    <>
+
+      {/*<FlexBox*/}
+      {/*  className="sap-margin-large"*/}
+      {/*  alignItems="Center"*/}
+      {/*  direction="Row"*/}
+      {/*  justifyContent="SpaceAround"*/}
+      {/*  wrap="NoWrap"*/}
+      {/*  style={{*/}
+      {/*    width: "300px",*/}
+      {/*    verticalAlign: 'top',*/}
+      {/*  }}*/}
+      {/*>*/}
         <Card
           className={"sap-margin-small"}
           header={
@@ -91,7 +96,10 @@ export default function About() {
               avatar={<Icon name="person-placeholder" />}
               subtitleText="Direct Reports"
               titleText="TeamSpace"/>}
-          style={{ width: "300px" }}
+          style={{
+            width: "300px",
+            verticalAlign: 'top',
+          }}
         >
           <List>
             <ListItemStandard description="Software Architect">
@@ -150,9 +158,9 @@ export default function About() {
           style={{ maxWidth: "900px" }}
         >
         </Card>
-      </FlexBox>
+      {/*</FlexBox>*/}
 
-    </div>
+    </>
   );
 }
 

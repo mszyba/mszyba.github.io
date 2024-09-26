@@ -1,6 +1,12 @@
 export const PathConstants = {
+  HASH: "/#",
   DASHBOARD: "/",
-  ABOUT: "about",
-  CONTACT: "contact",
-  PERSONAL_PAGE: "personal-page"
+  ABOUT: "/about",
+  HOME: "/home",
+  CONTACT: "/contact",
+  RESUME: "/resume"
+}
+
+export const PathConstantsHash = {
+  HOME: PathConstants.HASH + PathConstants.HOME
 }

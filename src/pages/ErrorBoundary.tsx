@@ -8,6 +8,7 @@ import { PathConstants } from "../constants/PathConstants";
 export default function ErrorBoundary() {
 
   const navigate = useNavigate();
+
   function handleClick() {
     navigate(PathConstants.DASHBOARD);
   }

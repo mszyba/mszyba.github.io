@@ -1,89 +1,107 @@
+import React from 'react';
+import '@sap-ui/common-css/dist/sap-content-paddings.css';
+import '@sap-ui/common-css/dist/common-css.css';
 import {
-  Breadcrumbs,
-  BreadcrumbsItem,
-  FlexBox,
-  Form,
-  FormItem,
-  Label,
-  Link,
-  ObjectPage,
-  ObjectPageHeader,
-  ObjectPageSection,
-  ObjectPageSubSection,
-  ObjectPageTitle,
-  Text,
-  Toolbar
+  Breadcrumbs, BreadcrumbsItem, DynamicPage,
+  DynamicPageHeader, DynamicPageTitle, Form,
+  FormItem, Label, Link, ObjectPageSection, ObjectPageSubSection,
+  Text, Title, Toolbar, ToolbarButton
 } from '@ui5/webcomponents-react';
-import "@ui5/webcomponents-icons/dist/home.js";
+import "@ui5/webcomponents-base/dist/features/F6Navigation.js"
+import "@ui5/webcomponents-icons/dist/action.js";
+import "@ui5/webcomponents-icons/dist/full-screen.js";
+import "@ui5/webcomponents-icons/dist/exit-full-screen.js";
+import "@ui5/webcomponents-icons/dist/decline.js";
 import { useNavigate } from "react-router-dom";
-import { PathConstants } from "../constants/PathConstants";
+import { PathConstantsHash } from "../constants/PathConstants";
 
-export default function PersonalPage() {
-
-  const navigate = useNavigate();
+export default function Personal() {
 
   return (
     <>
-      <ObjectPage
+      <DynamicPage
         headerArea={
-          <ObjectPageHeader>
-            <FlexBox alignItems="Center" wrap="Wrap">
-              <FlexBox direction="Column">
+          <DynamicPageHeader>
+            <Form
+              headerText="Contact"
+              labelSpan="S1 M1 L1 XL1"
+              layout="S1 M1 L1 XL1"
+            >
+              <FormItem labelContent={<Label showColon>E-mail</Label>}>
                 <Link href="mailto:anembok@anembok.eu">anembok@anembok.eu</Link>
-                <Link href="https://anembok.eu">anembok.eu</Link>
+              </FormItem>
+              <FormItem labelContent={<Label showColon>www</Label>}>
+                <Link href="https://dev.anembok.eu">https://dev.anembok.eu</Link>
+              </FormItem>
+              <FormItem labelContent={<Label showColon>LinkedIn</Label>}>
                 <Link href="https://www.linkedin.com/in/michal-szyba/">
-                  linkedin.com/in/michal-szyba</Link>
+                  https://linkedin.com/in/michal-szyba</Link>
+              </FormItem>
+              <FormItem labelContent={<Label showColon>City</Label>}>
                 <Label>Wrocław, Poland</Label>
-              </FlexBox>
-              <FlexBox direction="Column" style={{padding: '10px'}}>
-              </FlexBox>
-            </FlexBox>
-          </ObjectPageHeader>}
-        image="https://avatars.githubusercontent.com/u/29203263?v=4"
-        imageShapeCircle
-        mode="Default"
-        onBeforeNavigate={function _s() {
+              </FormItem>
+            </Form>
+          </DynamicPageHeader>
+        }
+        onPinButtonToggle={function ks() {
         }}
-        onPinButtonToggle={function _s() {
+        onTitleToggle={function ks() {
         }}
-        onSelectedSectionChange={function _s() {
-        }}
-        onToggleHeaderArea={function _s() {
-        }}
-        selectedSectionId="goals"
         style={{
-          height: '100%',
-          overflow: 'auto'
+          height: '800px'
         }}
         titleArea={
-          <ObjectPageTitle
-            actionsBar={
-              <Toolbar design="Transparent">
-              </Toolbar>
-            }
+          <DynamicPageTitle
+            // actionsBar={
+            //   <Toolbar design="Transparent">
+            //     <ToolbarButton design="Emphasized" text="Edit"/>
+            //     <ToolbarButton design="Transparent" text="Delete"/>
+            //     <ToolbarButton design="Transparent" text="Copy"/>
+            //     <ToolbarButton design="Transparent" icon="action"/>
+            //   </Toolbar>
+            // }
+            // navigationBar={
+            //   <Toolbar design="Transparent">
+            //     <ToolbarButton design="Transparent" icon="full-screen"/>
+            //     <ToolbarButton design="Transparent" icon="exit-full-screen"/>
+            //     <ToolbarButton design="Transparent" icon="decline"/>
+            //   </Toolbar>
+            // }
             breadcrumbs={
-              <Breadcrumbs
-                onItemClick={function (_s) {
-                  navigate(PathConstants.DASHBOARD)
-                }}
-              >
-                <BreadcrumbsItem>Home</BreadcrumbsItem>
+              <Breadcrumbs>
+                <BreadcrumbsItem href={PathConstantsHash.HOME}>Home</BreadcrumbsItem>
                 <BreadcrumbsItem>Personal Page</BreadcrumbsItem>
               </Breadcrumbs>
             }
-
-            header="Michał Szyba"
-            navigationBar={
-              <Toolbar design="Transparent">
-              </Toolbar>
+            heading={
+              <Title style={{fontSize: 'var(--sapObjectHeader_Title_FontSize)'}}>
+                Michał Szyba
+              </Title>
             }
-            subHeader="ABAP Developer">
-          </ObjectPageTitle>}
+            subheading={
+              <>
+                <Label>ABAP Developer</Label>
+                {/*<MessageStrip>Information (only visible if header content is expanded)</MessageStrip>*/}
+              </>
+            }
+            snappedHeading={
+              <Title style={{fontSize: 'var(--sapObjectHeader_Title_SnappedFontSize)'}}>
+                Michał Szyba
+              </Title>
+            }
+            snappedSubheading={
+              <>
+                <Label>ABAP Developer</Label>
+                {/*<MessageStrip>Information (only visible if header content is collapsed (snapped))</MessageStrip>*/}
+              </>
+            }
+          >
+          </DynamicPageTitle>
+        }
       >
         <ObjectPageSection
-          aria-label="Goals"
           id="goals"
-          titleText="Goals"
+          titleText="Job experience"
         >
           <Form
             labelSpan="S12 M12 L12 XL12"
@@ -114,7 +132,10 @@ export default function PersonalPage() {
             id="Certification"
             titleText="Certification"
           >
-            <Form>
+            <Form
+              labelSpan="S1 M2 L2 XL2"
+              layout="S1 M1 L1 XL1"
+            >
               <FormItem labelContent={<Label showColon>Mar, 2024</Label>}>
                 <Link href="https://www.credly.com/badges/1adff637-17d7-4c73-886b-87074ccdefd9">
                   SAP Certified Associate - Back-End Developer ABAP Cloud (C_ABAPD_2309)</Link>
@@ -143,7 +164,10 @@ export default function PersonalPage() {
             id="employment-employee-details"
             titleText="Employee Details"
           >
-            <Form>
+            <Form
+              labelSpan="S1 M2 L2 XL2"
+              layout="S1 M1 L1 XL1"
+            >
               <FormItem labelContent={<Label showColon>Apr, 2024 - present</Label>}>
                 <Text>
                   ABAP Developer
@@ -167,7 +191,7 @@ export default function PersonalPage() {
             </Form>
           </ObjectPageSubSection>
         </ObjectPageSection>
-      </ObjectPage>
+      </DynamicPage>
     </>
   );
 }

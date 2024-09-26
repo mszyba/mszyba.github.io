@@ -1,15 +1,14 @@
 import React from 'react';
-import MenuLeft from "./MenuLeft";
-import PersonalPage from "./PersonalPage";
+import Personal from "./Personal";
 
 export default function Dashboard() {
   return (
     <>
       <div className="sap-flex--justify-center">
-        <div className="sap-margin-small">
-          <MenuLeft/>
-        </div>
-        <PersonalPage/>
+        {/*<div className="sap-margin-small">*/}
+        {/*  <MenuLeft/>*/}
+        {/*</div>*/}
+        <Personal/>
       </div>
     </>
   );
